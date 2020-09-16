@@ -1,7 +1,7 @@
 version: "2.0"
 services:
     §§INSTANCE-molgenis:
-      image: registry.molgenis.org/molgenis/molgenis-app:8.1.8
+      image: registry.molgenis.org/molgenis/molgenis-app:8.4.2
       container_name: §§INSTANCE-molgenis
       environment:
         - molgenis.home=/home/molgenis
