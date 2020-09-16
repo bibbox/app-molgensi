@@ -6,7 +6,7 @@
 FROM tomcat:8.0-jre8
 
 RUN apt-get install openssl \
-	&& wget -O molgenis-app-8.4.2.war http://search.maven.org/remotecontent?filepath=org/molgenis/molgenis-app/8.1.8/molgenis-app-8.4.2.war
+	&& wget -O molgenis-app-8.4.2.war http://search.maven.org/remotecontent?filepath=org/molgenis/molgenis-app/8.4.2/molgenis-app-8.4.2.war
 
 RUN rm -r $CATALINA_HOME/webapps/ROOT \
     && rm -r $CATALINA_HOME/webapps/docs \
