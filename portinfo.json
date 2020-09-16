@@ -8,7 +8,7 @@
     },
     {
       "id": "§§PORT2",
-      "url": "§§INSTANCE-molgenis",
+      "url": "§§INSTANCE-frontend",
       "protocol": "HTTP",
       "proxy" : "PRIMARY"
     },
