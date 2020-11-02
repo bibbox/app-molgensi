@@ -1,4 +1,4 @@
-version: "2.0"
+version: "3.8"
 services:
     §§INSTANCE-molgenis:
       image: registry.molgenis.org/molgenis/molgenis-app:8.4.2
@@ -17,14 +17,14 @@ services:
         - MINIO_SECRET_KEY=molgenis
         - "CATALINA_OPTS=-Xmx1g -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled"
       ports:
-        - "§§PORT2:8080"
+        - "8080"
       links:
         - §§INSTANCE-molgenis-postgres:postgres
         - §§INSTANCE-molgenis-minio:minio
         - §§INSTANCE-molgenis-elasticsearch:elasticsearch
         - §§INSTANCE-molgenis-opencpu:opencpu
-      volumes_from: 
-        - §§INSTANCE-molgenis-data
+      volumes: 
+        - ./data/home/molgenis:/home/molgenis
       depends_on:
         - §§INSTANCE-molgenis-postgres
 
@@ -53,8 +53,8 @@ services:
         - POSTGRES_DB=molgenis
       expose:
         - "5432"
-      volumes_from: 
-        - §§INSTANCE-molgenis-data
+      volumes: 
+        - ./data/var/lib/postgresql/data:/var/lib/postgresql/data
       command: -c 'shared_buffers=256MB' -c 'max_locks_per_transaction=1024'
 
     §§INSTANCE-molgenis-elasticsearch:
@@ -70,8 +70,8 @@ services:
         memlock:
           soft: -1
           hard: -1
-      volumes_from: 
-          - §§INSTANCE-molgenis-data
+      volumes: 
+          - ./data/usr/share/elasticsearch/data:/usr/share/elasticsearch/data
       ports:
         - §§PORT3:9200
         - §§PORT4:9300
@@ -85,8 +85,8 @@ services:
     §§INSTANCE-molgenis-minio:
       image: minio/minio:RELEASE.2019-03-20T22-38-47Z
       container_name: §§INSTANCE-molgenis-minio
-      volumes_from: 
-        - §§INSTANCE-molgenis-data
+      volumes: 
+        - ./data/minio/data:/data
       ports:
         - §§PORT6:9000
       environment:
@@ -107,10 +107,6 @@ services:
         - ADMINER_DEFAULT_USER=molgenis
         - ADMINER_DEFAULT_DATABASE=molgenis
 
-    §§INSTANCE-molgenis-data:
-        image: busybox
-        container_name: §§INSTANCE-molgenis-data
-        volumes:
           - ./data/var/lib/postgresql/data:/var/lib/postgresql/data
           - ./data/usr/share/elasticsearch/data:/usr/share/elasticsearch/data
           - ./data/home/molgenis:/home/molgenis
