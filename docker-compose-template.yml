@@ -34,7 +34,7 @@ services:
       image: molgenis/molgenis-frontend:8.4.5
       container_name: §§INSTANCE-molgenis-frontend
       ports:
-        - "§§PORT1:80"
+        - "80"
       volumes: 
         - ./data/backend.conf:/etc/nginx/proxy.d/backend.conf
       volumes_from: 
@@ -73,14 +73,14 @@ services:
       volumes: 
           - ./data/usr/share/elasticsearch/data:/usr/share/elasticsearch/data
       ports:
-        - §§PORT3:9200
-        - §§PORT4:9300
+        - 9200
+        - 9300
 
     §§INSTANCE-molgenis-opencpu:
         image: molgenis/opencpu:opencpu-release-2019-03-20_12-07-11
         container_name: §§INSTANCE-molgenis-opencpu
         ports:
-          - §§PORT5:8004
+          - 8004
 
     §§INSTANCE-molgenis-minio:
       image: minio/minio:RELEASE.2019-03-20T22-38-47Z
@@ -88,7 +88,7 @@ services:
       volumes: 
         - ./data/minio/data:/data
       ports:
-        - §§PORT6:9000
+        - 9000
       environment:
         MINIO_ACCESS_KEY: molgenis
         MINIO_SECRET_KEY: molgenis
@@ -101,7 +101,7 @@ services:
       links:
         - §§INSTANCE-molgenis-postgres:db
       ports:
-        - §§PORT7:8080
+        - 8080
       environment:
         - ADMINER_DEFAULT_SERVER=db
         - ADMINER_DEFAULT_USER=molgenis
