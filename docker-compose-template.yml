@@ -37,8 +37,6 @@ services:
         - "80"
       volumes: 
         - ./data/backend.conf:/etc/nginx/proxy.d/backend.conf
-      volumes_from: 
-        - §§INSTANCE-molgenis-data
       depends_on:
         - "§§INSTANCE-molgenis"
       links:
