@@ -106,8 +106,4 @@ services:
         - ADMINER_DEFAULT_SERVER=db
         - ADMINER_DEFAULT_USER=molgenis
         - ADMINER_DEFAULT_DATABASE=molgenis
-
-          - ./data/var/lib/postgresql/data:/var/lib/postgresql/data
-          - ./data/usr/share/elasticsearch/data:/usr/share/elasticsearch/data
-          - ./data/home/molgenis:/home/molgenis
-          - ./data/minio/data:/data
+        
