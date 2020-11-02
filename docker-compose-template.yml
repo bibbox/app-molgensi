@@ -25,6 +25,7 @@ services:
         - §§INSTANCE-molgenis-opencpu:opencpu
       volumes: 
         - ./data/home/molgenis:/home/molgenis
+        - ./data/usr/share/elasticsearch/data:/usr/share/elasticsearch/data
       depends_on:
         - §§INSTANCE-molgenis-postgres
 
