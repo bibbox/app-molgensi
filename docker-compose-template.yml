@@ -1,4 +1,9 @@
 version: "3.8"
+
+networks:
+    bibbox-default-network:
+      external: true
+
 services:
     §§INSTANCE-molgenis:
       image: registry.molgenis.org/molgenis/molgenis-app:8.4.2
