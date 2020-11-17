@@ -24,7 +24,7 @@ services:
         - MINIO_SECRET_KEY=molgenis
         - "CATALINA_OPTS=-Xmx1g -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled"
       ports:
-        - "8080"
+        - "8097:8080"
       links:
         - §§INSTANCE-molgenis-postgres:postgres
         - §§INSTANCE-molgenis-minio:minio
